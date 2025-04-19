@@ -1,4 +1,15 @@
+# Simple workflow for updating static content in this repo
+name: Update generated content in repo
+
 on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+    paths:
+      - 'scripts'
+      - 'templates'
+      - '.github'
+
   schedule:
     - cron: "12 3 * * *"
 
@@ -25,6 +36,8 @@ jobs:
 
       - name: Commit and push
         run: |
+          git config --global user.email "ancha-times@github.io"
+          git config --global user.name "ancha-times automation"
           git commit -am "$(date +%F) update"
           git push
 
