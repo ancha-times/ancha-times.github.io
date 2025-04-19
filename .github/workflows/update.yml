@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   update:
-  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
