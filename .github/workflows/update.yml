@@ -28,6 +28,31 @@ jobs:
       - name: Update
         run: scripts/update.sh
 
+      - name: subs NIX
+        uses: actions/upload-artifact@v4
+        id: subs-nix
+        with:
+          name: subs-nix
+          path: data/subs.txt
+
+      - name: subs nix2dos
+        run: sed -i '/\r/! s/$/\r/' data/subs.txt
+
+      - name: subs DOS
+        uses: actions/upload-artifact@v4
+        id: subs-dos
+        with:
+          name: subs-dos
+          path: data/subs.txt
+
+      - name: subs cleanup
+        run: rm data/subs.txt
+
+      - name: patch times.html
+        run: |
+          sed -i 's/SUBS-NIX/${{ steps.subs-nix.outputs.artifact-url }}/' html/times.html
+          sed -i 's/SUBS-DOS/${{ steps.subs-dos.outputs.artifact-url }}/' html/times.html
+
       - name: Commit and push
         run: |
           git config --global user.email "ancha-times@github.io"

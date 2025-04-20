@@ -6,7 +6,7 @@ DATA="$TOP/data"
 TEMPLATES="$TOP/templates"
 OUT="$TOP/html"
 TIMES="$OUT/times.html"
-SUBS="$OUT/subs.txt"
+SUBS="$DATA/subs.txt"
 
 cd "$DATA"
 
@@ -81,7 +81,3 @@ set -x
 
 sed '1,/HERE/d' "$TEMPLATES/times.html" >>"$TIMES"
 
-cd "$OUT"
-
-zip -l subs.zip subs.txt
-gzip -f subs.txt
