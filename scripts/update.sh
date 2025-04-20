@@ -11,7 +11,7 @@ SUBS="$DATA/subs.txt"
 cd "$DATA"
 
 # delete duplicate description files
-ls *.description | cut -c10-20 | uniq -c | awk '$1=='2' {print $2}' | xargs -I % sh -c 'rm *%*'
+ls *.description | cut -c10-20 | sort | uniq -c | awk '$1=='2' {print $2}' | xargs -I % sh -c 'rm *%*'
 
 # create new da file
 ls *.description | sed -r 's_^[^-]*-(.{11})-.*_youtube \1_' >da.txt.new
