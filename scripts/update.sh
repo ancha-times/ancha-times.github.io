@@ -10,6 +10,8 @@ TIMES="$OUT/times.html"
 SUBS="$TMP/subs.nix.txt"
 DOSUBS="$TMP/subs.dos.txt"
 
+mkdir -p "$TMP"
+
 cd "$DATA"
 
 # delete duplicate description files
