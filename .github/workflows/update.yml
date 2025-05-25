@@ -6,9 +6,6 @@ on:
   push:
     branches: ["main"]
 
-  schedule:
-    - cron: "12 3 * * *"
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -24,41 +21,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Update
-        run: scripts/update.sh
-
-      - name: subs NIX
-        uses: actions/upload-artifact@v4
-        id: subs-nix
-        with:
-          name: subs-nix
-          path: data/subs.txt
-
-      - name: subs nix2dos
-        run: sed -i '/\r/! s/$/\r/' data/subs.txt
-
-      - name: subs DOS
-        uses: actions/upload-artifact@v4
-        id: subs-dos
-        with:
-          name: subs-dos
-          path: data/subs.txt
-
-      - name: subs cleanup
-        run: rm data/subs.txt
-
-      - name: patch times.html
-        run: |
-          sed -i 's_SUBS-NIX_${{ steps.subs-nix.outputs.artifact-url }}_' html/times.html
-          sed -i 's_SUBS-DOS_${{ steps.subs-dos.outputs.artifact-url }}_' html/times.html
-
-      - name: Commit and push
-        run: |
-          git config --global user.email "ancha-times@github.io"
-          git config --global user.name "ancha-times automation"
-          git commit -am "$(date +%F) update"
-          git push
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

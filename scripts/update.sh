@@ -5,8 +5,10 @@ TOP="$(dirname "$BIN")"
 DATA="$TOP/data"
 TEMPLATES="$TOP/templates"
 OUT="$TOP/html"
+TMP="$TOP/tmp"
 TIMES="$OUT/times.html"
-SUBS="$DATA/subs.txt"
+SUBS="$TMP/subs.nix.txt"
+DOSUBS="$TMP/subs.dos.txt"
 
 cd "$DATA"
 
@@ -80,4 +82,16 @@ exec >/dev/null
 set -x
 
 sed '1,/HERE/d' "$TEMPLATES/times.html" >>"$TIMES"
+sed '/\r/! s/$/\r/' "$SUBS" >"$DOSUBS"
 
+cd -
+
+test "$(git status --porcelain)" = "" && exit 0 || true
+
+
+git add data html
+git commit -m "$(date +%F) update"
+git push
+
+gh release delete subs --cleanup-tag --yes
+gh release create subs "$SUBS" "$DOSUBS" --generate-notes
