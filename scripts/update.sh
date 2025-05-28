@@ -12,6 +12,11 @@ DOSUBS="$TMP/subs.dos.txt"
 
 mkdir -p "$TMP"
 
+cd "$TOP"
+
+git fetch
+git reset --hard origin/master
+
 cd "$DATA"
 
 # delete duplicate description files
