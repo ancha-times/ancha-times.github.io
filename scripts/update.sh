@@ -15,7 +15,7 @@ mkdir -p "$TMP"
 cd "$TOP"
 
 git fetch
-git reset --hard origin/master
+git reset --hard origin/main
 
 cd "$DATA"
 
@@ -50,8 +50,8 @@ set +x
 export IFS='
 '
 
-for f in `ls -1 *.description`; do
-	fn="`echo "$f" | sed -r 's/.description$//'`"
+for f in `find -iname '*.description' | sort`; do
+	fn="`echo "$f" | sed -r 's/^..//;s/.description$//'`"
 	id="`echo "$fn" | cut -c 10-20`"
 	url="https://www.youtube.com/watch?v=$id"
 	date="`echo "$fn" | sed -r 's/^(....)(..)(..).*/\1-\2-\3/'`"
@@ -93,7 +93,7 @@ sed '/\r/! s/$/\r/' "$SUBS" >"$DOSUBS"
 
 cd -
 
-test "$(git status --porcelain)" = "" && exit 0 || true
+test "$(git status --porcelain data html)" = "" && exit 0 || true
 
 
 git add data html
