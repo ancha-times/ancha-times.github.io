@@ -39,6 +39,8 @@ chmod a+x ./yt-dlp
 # rm channel description
 rm -f NA-UCXJYy66gIOEsT04ndBUBFPw*
 
+rm -f da.txt da.txt.new
+
 rm -f yt-dlp
 
 cp "$TEMPLATES/subs.txt" "$SUBS"
