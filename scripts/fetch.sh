@@ -23,17 +23,15 @@ head -n -12 da.txt.new >da.txt
 set -ex
 
 # download yt-dlp
-curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >yt-dlp
+test -f yt-dlp || curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >yt-dlp
 chmod a+x ./yt-dlp
 
-./yt-dlp --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(id)s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw' || echo 'ignoring errors...'
+./yt-dlp -U --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(id)s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw' || echo 'ignoring errors...'
 
 # rm channel description
 rm -f NA-UCXJYy66gIOEsT04ndBUBFPw*
 
 rm -f da.txt da.txt.new
-
-rm -f yt-dlp
 
 cd "$TOP"
 
