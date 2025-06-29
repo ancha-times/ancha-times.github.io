@@ -1,5 +1,6 @@
-import sys
 import json
+import re
+import sys
 
 json_file=sys.argv[1]
 
@@ -13,4 +14,5 @@ for comment in data['comments']:
     if comment['is_pinned']:
         pinned_comments.append(comment['id'])
     if comment['is_pinned'] or comment['parent'] in pinned_comments:
-        print('<hr>'+comment['text'])
+        if re.search('\\d:\\d\\d', comment['text']):
+            print('<p>~ ~ ~ ~ ~</p>'+comment['text'])
