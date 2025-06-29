@@ -6,9 +6,6 @@ DATA="$TOP/data"
 
 cd "$TOP"
 
-git fetch
-git reset --hard origin/main
-
 cd "$DATA"
 
 # delete duplicate description files
