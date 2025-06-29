@@ -23,9 +23,9 @@ set -ex
 test -f yt-dlp || curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >yt-dlp
 chmod a+x ./yt-dlp
 
-./yt-dlp -U --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' || echo 'ignoring errors...'
-./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(id)s-s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/shorts' || echo 'ignoring errors...'
-./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams' || echo 'ignoring errors...'
+./yt-dlp -U --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,2,10,all" -o '%(upload_date)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' || echo 'ignoring errors...'
+./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,2,10,all" -o '%(upload_date)s-%(id)s-s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/shorts' || echo 'ignoring errors...'
+./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,2,10,all" -o '%(upload_date)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams' || echo 'ignoring errors...'
 
 # rm channel description
 rm -f NA-UCXJYy66gIOEsT04ndBUBFPw*
