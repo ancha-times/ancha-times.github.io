@@ -35,7 +35,7 @@ for f in `find -iname '*.description' | sort`; do
 
 	exec >>"$TIMES"
 
-	echo "<details id='s$id' class='$type'><summary><h2><a href='$url'>$date</a> - $title</h2></summary>"
+	echo "<details id='s$id' class='$type'><summary><h2><a href='$url'>$date</a> <span class='type'></span> $title</h2></summary>"
 	cat $fn.description | python3 "$BIN/linkify.py" "$url&t=" | sed 's/$/<br>/'
 	echo '</details>'
 
