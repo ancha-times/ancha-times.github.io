@@ -38,7 +38,7 @@ for f in `find -iname '*.description' | sort`; do
 	echo "<details id='s$id' class='$type'><summary><h2><a href='$url'>$date</a> <span class='type'></span> $title</h2></summary>"
 	{
 		cat $fn.description
-		test -f $fn.info.json && python3 "$BIN/com2descr.py" $fn.info.json || true
+		test -f $fn.comments.json && python3 "$BIN/com2descr.py" $fn.comments.json || true
 	} | python3 "$BIN/linkify.py" "$url&t=" | sed 's/$/<br>/'
 	echo '</details>'
 

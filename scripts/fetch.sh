@@ -32,6 +32,15 @@ rm -f NA-UCXJYy66gIOEsT04ndBUBFPw*
 
 rm -f da.txt da.txt.new
 
+export IFS='
+'
+
+for f in `find -iname '*.info.json'`; do
+	fn="`echo "$f" | sed -r 's/^..//;s/.info.json$//'`"
+	jq '.comments | map(del(._time_text)) | {comments: .}' "$fn.info.json" >"$fn.comments.json"
+	rm $f
+done
+
 cd "$TOP"
 
 test "$(git status --porcelain data)" = "" && exit 0 || true
