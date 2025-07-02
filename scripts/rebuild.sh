@@ -25,11 +25,11 @@ cd "$DATA"
 
 for f in `find -iname '*.description' | sort`; do
 	fn="`echo "$f" | sed -r 's/^..//;s/.description$//'`"
-	id="`echo "$fn" | cut -c 10-20`"
+	id="`echo "$fn" | cut -c 21-31`"
 	url="https://www.youtube.com/watch?v=$id"
 	date="`echo "$fn" | sed -r 's/^(....)(..)(..).*/\1-\2-\3/'`"
-	type="`echo "$fn" | cut -c 22`"
-	title="`echo "$fn" | cut -c 24-`"
+	type="`echo "$fn" | cut -c 33`"
+	title="`echo "$fn" | cut -c 35-`"
 
 	echo "$id / $date / $type / $title" >&2
 

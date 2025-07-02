@@ -28,7 +28,7 @@ def http2link(m):
             id=id[:11]
             files = os.listdir(base_dir)
             for filename in files:
-                mm=re.match('[0-9]{8}-%s-.-(.*).description$' % id, filename)
+                mm=re.match('.{8}-.{10}-%s-.-(.*).description$' % id, filename)
                 if mm:
                     title=mm.group(1)
                     return '<a href="{}">{}</a>{}<sup><a href="#s{}">[#]</a></sup>'.format(url,title,rest,id)
