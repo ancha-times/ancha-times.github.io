@@ -1,0 +1,49 @@
+{
+  "comments": [
+    {
+      "id": "UgzcuedGelzpexFSmOV4AaABAg",
+      "parent": "root",
+      "text": "Здравствуйте!❤❤❤",
+      "like_count": 0,
+      "author_id": "UCfnpjI8AhueUTvY6XBspfig",
+      "author": "@ManushakTumanyan",
+      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_lkd0rxDNf5fMK_UoPYRhOsgwNtwY9ZOs1KY-dpA5QhVhAqxMEwBKhHbjPdHHUvhecsUw=s88-c-k-c0x00ffffff-no-rj",
+      "author_is_uploader": false,
+      "author_is_verified": false,
+      "author_url": "https://www.youtube.com/@ManushakTumanyan",
+      "is_favorited": false,
+      "timestamp": 1751443200,
+      "is_pinned": false
+    },
+    {
+      "id": "Ugz8g7C8pxmR3rYOg8d4AaABAg",
+      "parent": "root",
+      "text": "Как у вас здесь интересно!",
+      "like_count": 0,
+      "author_id": "UCPrRqUhYs0PBIWmLhCgpUTg",
+      "author": "@vaeva6159",
+      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_n6zto_C9BktLFHk0shyeBOowCc3JpIroTSTGbdP9UXzsqj=s88-c-k-c0x00ffffff-no-rj",
+      "author_is_uploader": false,
+      "author_is_verified": false,
+      "author_url": "https://www.youtube.com/@vaeva6159",
+      "is_favorited": false,
+      "timestamp": 1751328000,
+      "is_pinned": false
+    },
+    {
+      "id": "Ugz8g7C8pxmR3rYOg8d4AaABAg.AK1PQVGyB99AK2yCL_pLDF",
+      "parent": "Ugz8g7C8pxmR3rYOg8d4AaABAg",
+      "text": "ага! записывайтесь к нам скорее!",
+      "like_count": 0,
+      "author_id": "UCXJYy66gIOEsT04ndBUBFPw",
+      "author": "@AnchaBaranovaProf",
+      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_njW5BBBWRakWs8PxeDJ78XedElkPPoV9h6IhUxAuzjlLo=s88-c-k-c0x00ffffff-no-rj",
+      "author_is_uploader": true,
+      "author_is_verified": true,
+      "author_url": "https://www.youtube.com/@AnchaBaranovaProf",
+      "is_favorited": false,
+      "timestamp": 1751418000,
+      "is_pinned": false
+    }
+  ]
+}
