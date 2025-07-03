@@ -29,7 +29,7 @@ chmod a+x ./yt-dlp
 # fix timestamps, one day at a time
 if test -n "$bad_date"; then
 	bad_ids="$(ls "$bad_date"*.description | cut -c21-31)"
-	ts_id_pairs="$(yt-dlp -U --get-filename -o '%(timestamp)s %(id)s' $bad_ids || true)"
+	ts_id_pairs="$(./yt-dlp -U --get-filename -o '%(timestamp)s %(id)s' $bad_ids || true)"
 	IFS='
 	'
 	for ts_id in $ts_id_pairs; do
