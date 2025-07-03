@@ -56,7 +56,7 @@ export IFS='
 
 for f in `find -iname '*.info.json'`; do
 	fn="`echo "$f" | sed -r 's/^..//;s/.info.json$//'`"
-	jq '.comments | map(del(._time_text, .timestamp)) | {comments: .}' "$fn.info.json" >"$fn.comments.json"
+	jq '.comments | map(del(._time_text, .timestamp, .like_count)) | {comments: .}' "$fn.info.json" >"$fn.comments.json"
 	rm $f
 done
 
