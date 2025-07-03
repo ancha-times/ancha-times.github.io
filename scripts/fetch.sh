@@ -42,8 +42,8 @@ if test -n "$bad_date"; then
 	done
 fi
 
-./yt-dlp -U --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,2,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' || echo 'ignoring errors...'
-./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,2,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams' || echo 'ignoring errors...'
+./yt-dlp -U --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,1,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' || echo 'ignoring errors...'
+./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,1,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams' || echo 'ignoring errors...'
 ./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(timestamp)s-%(id)s-s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/shorts' || echo 'ignoring errors...'
 
 # rm channel description
@@ -57,6 +57,7 @@ export IFS='
 for f in `find -iname '*.info.json'`; do
 	fn="`echo "$f" | sed -r 's/^..//;s/.info.json$//'`"
 	jq '.comments | map(del(._time_text, .timestamp, .like_count)) | {comments: .}' "$fn.info.json" >"$fn.comments.json"
+	grep -q '^\s*"is_pinned": true,\?$' "$fn.comments.json" || echo '{comments: []}' >"$fn.comments.json"
 	rm $f
 done
 
