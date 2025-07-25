@@ -37,7 +37,7 @@ if test -n "$bad_date"; then
 		ts="${ts_id%% *}"
 		id="${ts_id##* }"
 		echo "[$ts] - [$id]"
-		for f in `ls *$id*`; do
+		for f in `find -iname '*'"$id"'*'`; do
 			new_f="`echo "$f" | sed "s/-$old_ts-/-$ts-/"`"
 			mv "$f" "$new_f"
 		done
