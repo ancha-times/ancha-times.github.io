@@ -23,14 +23,15 @@ bad_date="$(ls *.description | cut -c1-20 | sort | uniq -c | awk '$1!='1' {print
 set -ex
 
 # download yt-dlp
-test -f yt-dlp || curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >yt-dlp
-chmod a+x ./yt-dlp
+YT_DLP=/mnt/sda/yt-dlp
+test -f $YT_DLP || curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >$YT_DLP
+chmod a+x $YT_DLP
 
 # fix timestamps, one day at a time
 if test -n "$bad_date"; then
 	old_ts="`echo "$bad_date" | cut -c10-19`"
 	bad_ids="$(ls "$bad_date"*.description | cut -c21-31)"
-	ts_id_pairs="$(./yt-dlp -U --get-filename -o '%(timestamp)s %(id)s' $bad_ids || true)"
+	ts_id_pairs="$($YT_DLP -U --get-filename -o '%(timestamp)s %(id)s' $bad_ids || true)"
 	IFS='
 	'
 	for ts_id in $ts_id_pairs; do
@@ -44,9 +45,9 @@ if test -n "$bad_date"; then
 	done
 fi
 
-./yt-dlp -U --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,1,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' || echo 'ignoring errors...'
-./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,1,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams' || echo 'ignoring errors...'
-./yt-dlp    --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(timestamp)s-%(id)s-s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/shorts' || echo 'ignoring errors...'
+$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,1,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' || echo 'ignoring errors...'
+$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --write-comments --extractor-args "youtube:max_comments=all,1,100,all" -o '%(upload_date)s-%(timestamp)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams' || echo 'ignoring errors...'
+$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description -o '%(upload_date)s-%(timestamp)s-%(id)s-s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/shorts' || echo 'ignoring errors...'
 
 # rm channel description
 rm -f NA-NA-UCXJYy66gIOEsT04ndBUBFPw*
