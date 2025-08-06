@@ -31,7 +31,7 @@ chmod a+x $YT_DLP
 if test -n "$bad_date"; then
 	old_ts="`echo "$bad_date" | cut -c10-19`"
 	bad_ids="$(ls "$bad_date"*.description | cut -c21-31)"
-	ts_id_pairs="$($YT_DLP -U --get-filename -o '%(timestamp)s %(id)s' $bad_ids || true)"
+	ts_id_pairs="$($YT_DLP -U --get-filename -o '%(timestamp)s %(id)s' -- $bad_ids || true)"
 	IFS='
 	'
 	for ts_id in $ts_id_pairs; do
