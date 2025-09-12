@@ -23,7 +23,7 @@ bad_date="$(ls *.description | cut -c1-20 | sort | uniq -c | awk '$1!='1' {print
 set -ex
 
 # download yt-dlp
-YT_DLP=/mnt/sda/yt-dlp
+YT_DLP=$TOP/tmp/yt-dlp
 test -f $YT_DLP || curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >$YT_DLP
 chmod a+x $YT_DLP
 
