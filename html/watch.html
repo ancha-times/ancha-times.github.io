@@ -11,7 +11,7 @@
 	const url=u.searchParams.get('v');
 	const readable_url = decodeURIComponent(decodeURIComponent(url));
 	const filename = readable_url.substring(readable_url.lastIndexOf("/") + 1);
-	const title = filename.replace(/\[.{11}\]/,'-').replace(/\.mp4$/i,'');
+	const title = filename.replace(/\[.{11}\]/,'-').replace(/#t=[0-9]*$/i,'').replace(/\.mp4$/i,'');
 	video.src=url;
 	link.href=url;
 	link.innerText=title;
