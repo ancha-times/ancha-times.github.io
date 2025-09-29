@@ -1,0 +1,21 @@
+<!doctype html><html lang=ru><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
+<center>
+	<h1><a></a></h1>
+	<video controls></video>
+</center>
+<script>
+	const video=document.querySelector('video');
+	const link=document.querySelector('a');
+	const u=new URL(location.href);
+	const url=u.searchParams.get('v');
+	const readable_url = decodeURIComponent(decodeURIComponent(url));
+	const filename = readable_url.substring(readable_url.lastIndexOf("/") + 1);
+	const title = filename.replace(/\[.{11}\]/,'-').replace(/\.mp4$/i,'');
+	video.src=url;
+	link.href=url;
+	link.innerText=title;
+	document.title=title;
+</script>
+</body></html>
+

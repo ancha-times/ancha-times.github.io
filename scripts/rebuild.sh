@@ -37,11 +37,11 @@ for f in `find -iname '*.description' | sort -r`; do
 
 	exec >>"$TIMES"
 
-	echo "<details id='s$id' class='$type'><summary><h2><a href='$url'>$date</a> <span class='type'></span> $title</h2></summary>"
+	echo "<details id='s$id' class='$type'><summary><h2><a href='$url' data-id='$id'>$date</a> <span class='type'></span> $title</h2></summary>"
 	{
 		cat $fn.description
 		test -f $fn.comments.json && python3 "$BIN/com2descr.py" $fn.comments.json || true
-	} | python3 "$BIN/linkify.py" "$url&t=" "$TMP/id2title.dat" | sed 's/$/<br>/'
+	} | python3 "$BIN/linkify.py" "$id" "$url&t=" "$TMP/id2title.dat" | sed 's/$/<br>/'
 	echo '</details>'
 
 	test -f $fn.ru.srv1 || continue

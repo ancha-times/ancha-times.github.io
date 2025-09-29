@@ -4,6 +4,7 @@
 html {color-scheme: light dark}
 summary {cursor:pointer}
 h2 {display:inline}
+#mirror {position: absolute; top:0px; right:0px; font-size:small; text-decoration:none}
 :target {border: 5px dotted}
 [data-title]:after {content: "[" attr(data-title) "]"}
 /* h2 a {color: inherit !important} */
@@ -15,6 +16,7 @@ body:has(#l:not(:checked)) .l {display:none}
 .l .type::after{content: "📺"}
 </style>
 </head><body>
+<a id="mirror" href="javascript:init_mirror();void 0;">🪞</a>
 <center>
 	<h1>Все видео Анчи Барановой</h1>
 	<p>С описаниями и таймкодами, если есть в описании.</p>
@@ -41,4 +43,26 @@ HERE
 <center><small>
 		Сгенрировано скриптом, который есть <a href="https://github.com/ancha-times/ancha-times.github.io">на GitHub</a>.
 </small></center>
+<script>
+	var inputs={};
+	function addScript( src ) {
+		var s = document.createElement( "script" );
+		s.setAttribute( 'src', src );
+		document.body.appendChild( s );
+	}
+	function init_mirror(){
+		var text=prompt('mirror spec');
+		if(!text) return;
+		inputs=JSON.parse(text);
+		addScript(inputs.prefix+inputs.init);
+	}
+	function mirror(id2file){
+		Array.from(document.querySelectorAll('a[data-id]')).forEach(link=>{
+			if(!(link.dataset.id in id2file)) return;
+			link.href='watch.html?v='+encodeURIComponent(inputs.prefix+encodeURIComponent(id2file[link.dataset.id]));
+			if('sec' in link.dataset)
+				link.href+=encodeURIComponent('#t='+link.dataset.sec);
+		});
+	}
+</script>
 </body></html>

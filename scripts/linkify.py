@@ -3,9 +3,10 @@ import pickle
 import re
 import sys
 
-base_url=sys.argv[1]
+my_id=sys.argv[1]
+base_url=sys.argv[2]
 base_dir='.'
-id2title_file=sys.argv[2]
+id2title_file=sys.argv[3]
 
 text=sys.stdin.read()
 
@@ -31,7 +32,7 @@ def http2link(m):
             id=id[:11]
             if id in id2title:
                 title=id2title[id]
-                return '<a href="{}">{}</a>{}<sup><a href="#s{}">[#]</a></sup>'.format(url,title,rest,id)
+                return '<a href="{}" data-id="{}">{}</a>{}<sup><a href="#s{}">[#]</a></sup>'.format(url,id,title,rest,id)
 
     return '<a href="{}">{}</a>{}'.format(url,title,rest)
 
@@ -44,7 +45,7 @@ def time2link(m):
 	hms=list(map(lambda x: int(x), hms))
 	sec=hms[0]*60*60 + hms[1]*60 + hms[2]
 	url=base_url+str(sec)
-	return '<a href="{}">{}</a>'.format(url,m.group(0))
+	return '<a href="{}" data-id="{}" data-sec="{}">{}</a>'.format(url,my_id,sec,m.group(0))
 
 print(re.sub('(\\d\\d?:)?\\d\\d?:\\d\\d',time2link,text))
 
