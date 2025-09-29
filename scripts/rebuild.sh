@@ -6,7 +6,7 @@ DATA="$TOP/data"
 TEMPLATES="$TOP/templates"
 OUT="$TOP/html"
 TMP="$TOP/tmp"
-TIMES="$OUT/times.html"
+TIMES="$OUT/index.html"
 SUBS="$TMP/subs.nix.txt"
 DOSUBS="$TMP/subs.dos.txt"
 
@@ -14,7 +14,7 @@ mkdir -p "$TMP"
 
 cp "$TEMPLATES/subs.txt" "$SUBS"
 
-sed '/HERE/,$d' "$TEMPLATES/times.html" >"$TIMES"
+sed '/HERE/,$d' "$TEMPLATES/index.html" >"$TIMES"
 
 set -e
 
@@ -67,5 +67,5 @@ exec >/dev/null
 
 set -x
 
-sed '1,/HERE/d' "$TEMPLATES/times.html" >>"$TIMES"
+sed '1,/HERE/d' "$TEMPLATES/index.html" >>"$TIMES"
 sed '/\r/! s/$/\r/' "$SUBS" >"$DOSUBS"
