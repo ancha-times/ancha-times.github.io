@@ -23,7 +23,9 @@ export IFS='
 
 cd "$DATA"
 
-for f in `find -iname '*.description' | sort`; do
+python3 "$BIN/id2title.py" "$TMP/id2title.dat"
+
+for f in `find -iname '*.description' | sort -r`; do
 	fn="`echo "$f" | sed -r 's/^..//;s/.description$//'`"
 	id="`echo "$fn" | cut -c 21-31`"
 	url="https://www.youtube.com/watch?v=$id"
@@ -39,7 +41,7 @@ for f in `find -iname '*.description' | sort`; do
 	{
 		cat $fn.description
 		test -f $fn.comments.json && python3 "$BIN/com2descr.py" $fn.comments.json || true
-	} | python3 "$BIN/linkify.py" "$url&t=" | sed 's/$/<br>/'
+	} | python3 "$BIN/linkify.py" "$url&t=" "$TMP/id2title.dat" | sed 's/$/<br>/'
 	echo '</details>'
 
 	test -f $fn.ru.srv1 || continue

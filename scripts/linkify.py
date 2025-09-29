@@ -1,15 +1,18 @@
 import os
+import pickle
 import re
 import sys
 
 base_url=sys.argv[1]
-# base_dir=sys.argv[2]
 base_dir='.'
+id2title_file=sys.argv[2]
 
 text=sys.stdin.read()
 
 text=text.replace('https://www.youtube.com/edit?o=U&video_id=', 'https://www.youtube.com/watch?v=')
 
+with open(id2title_file, 'rb') as file:
+    id2title = pickle.load(file)
 
 def http2link(m):
     url=title=m.group(0)
@@ -26,12 +29,9 @@ def http2link(m):
         if url.startswith(prefix):
             id=url[len(prefix):]
             id=id[:11]
-            files = os.listdir(base_dir)
-            for filename in files:
-                mm=re.match('.{8}-.{10}-%s-.-(.*).description$' % id, filename)
-                if mm:
-                    title=mm.group(1)
-                    return '<a href="{}">{}</a>{}<sup><a href="#s{}">[#]</a></sup>'.format(url,title,rest,id)
+            if id in id2title:
+                title=id2title[id]
+                return '<a href="{}">{}</a>{}<sup><a href="#s{}">[#]</a></sup>'.format(url,title,rest,id)
 
     return '<a href="{}">{}</a>{}'.format(url,title,rest)
 
