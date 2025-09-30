@@ -58,11 +58,15 @@ HERE
 	}
 	function mirror(id2file){
 		Array.from(document.querySelectorAll('a[data-id]')).forEach(link=>{
-			if(!(link.dataset.id in id2file)) return;
+			if(!(link.dataset.id in id2file)){
+				link.style.textDecoration="line-through";
+				return;
+			}
 			link.href='watch.html?v='+encodeURIComponent(inputs.prefix+encodeURIComponent(id2file[link.dataset.id]));
 			if('sec' in link.dataset)
 				link.href+=encodeURIComponent('#t='+link.dataset.sec);
 		});
+		document.getElementById('mirror').style.display='none';
 	}
 </script>
 </body></html>
