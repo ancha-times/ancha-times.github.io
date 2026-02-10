@@ -27,8 +27,8 @@ YT_DLP=$TOP/tmp/yt-dlp
 test -f $YT_DLP || curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp >$YT_DLP
 chmod a+x $YT_DLP
 
-$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --extractor-args "youtube:lang=ru;max_comments=all,1,100,all;comment_sort=top" --write-comments -o '%(upload_date)s-%(timestamp)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' -U || echo 'ignoring errors...'
-$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --extractor-args "youtube:lang=ru;max_comments=all,1,100,all;comment_sort=top" --write-comments -o '%(upload_date)s-%(timestamp)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams'   || echo 'ignoring errors...'
+$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --extractor-args "youtube:lang=ru;max_comments=all,1,100,all" --write-comments -o '%(upload_date)s-%(timestamp)s-%(id)s-v-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/videos' -U || echo 'ignoring errors...'
+$YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --extractor-args "youtube:lang=ru;max_comments=all,1,100,all" --write-comments -o '%(upload_date)s-%(timestamp)s-%(id)s-l-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/streams'   || echo 'ignoring errors...'
 $YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-download --write-description --extractor-args "youtube:lang=ru" -o '%(upload_date)s-%(timestamp)s-%(id)s-s-%(title)s.%(ext)s' --download-archive da.txt 'https://www.youtube.com/channel/UCXJYy66gIOEsT04ndBUBFPw/shorts' || echo 'ignoring errors...'
 
 # rm channel description
