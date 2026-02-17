@@ -14,8 +14,8 @@ ls *.description | cut -c21-31 | sort | uniq -c | awk '$1=='2' {print $2}' | xar
 # create new da file
 ls *.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da.txt.new
 
-# delete last 12 entries, to force their refresh
-head -n -12 da.txt.new >da.txt
+# delete last 22 entries, to force their refresh
+head -n -22 da.txt.new >da.txt
 
 # download yt-dlp
 YT_DLP=$TOP/tmp/yt-dlp
