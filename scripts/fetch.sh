@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 BIN="$(dirname "$(realpath $0)")"
 TOP="$(dirname "$BIN")"
