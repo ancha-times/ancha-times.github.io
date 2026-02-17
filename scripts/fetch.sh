@@ -12,10 +12,14 @@ cd "$DATA"
 ls *.description | cut -c21-31 | sort | uniq -c | awk '$1=='2' {print $2}' | xargs -I % sh -c 'rm *%*'
 
 # create new da file
-ls *.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da.txt.new
+ls *-v-*.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da-v.txt
+ls *-l-*.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da-l.txt
+ls *-s-*.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da-s.txt
 
-# delete last 22 entries, to force their refresh
-head -n -22 da.txt.new >da.txt
+# delete last 4 entries from each da, to force their refresh
+head -n -4 da-v.txt  >da.txt
+head -n -4 da-l.txt >>da.txt
+head -n -4 da-s.txt >>da.txt
 
 # download yt-dlp
 YT_DLP=$TOP/tmp/yt-dlp
@@ -38,7 +42,7 @@ $YT_DLP --ignore-errors --write-auto-sub --sub-lang ru --sub-format srv1 --skip-
 # rm channel description
 rm -f NA-NA-UCXJYy66gIOEsT04ndBUBFPw*
 
-rm -f da.txt da.txt.new
+rm -f da.txt da-*.txt
 
 export IFS='
 '
