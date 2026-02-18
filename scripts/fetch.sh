@@ -16,10 +16,11 @@ ls *-v-*.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da-v.txt
 ls *-l-*.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da-l.txt
 ls *-s-*.description | sed -r 's_^.{8}-.{10}-(.{11})-.*_youtube \1_' >da-s.txt
 
-# delete last 4 entries from each da, to force their refresh
+# delete last 4 videos and livestrams from da, to force their refresh
+# keep all shorts, they rarely refresh
 head -n -4 da-v.txt  >da.txt
 head -n -4 da-l.txt >>da.txt
-head -n -4 da-s.txt >>da.txt
+cat da-s.txt >>da.txt
 
 # download yt-dlp
 YT_DLP=$TOP/tmp/yt-dlp
@@ -28,7 +29,7 @@ chmod a+x $YT_DLP
 
 # fetch comments for 4 latest live/videos without them
 # (should move into the past starting at 20250620)
-comm -23 --check-order <(ls *-v-*.description *-l-*.description | sed 's/.description$//') <(ls *-v-*.comments.json *-l-*.comments.json | sed 's/.comments.json$//') | tail -n3 | while read -r fn; do
+comm -23 --check-order <(ls *-v-*.description *-l-*.description | sed 's/.description$//') <(ls *-v-*.comments.json *-l-*.comments.json | sed 's/.comments.json$//') | tail -n4 | while read -r fn; do
   id="`echo "$fn" | cut -c 21-31`"
   $YT_DLP --write-comments --extractor-args "youtube:lang=ru;max_comments=all,1,100,all" --skip-download "https://www.youtube.com/watch?v=$id" -o "$fn"
 done
