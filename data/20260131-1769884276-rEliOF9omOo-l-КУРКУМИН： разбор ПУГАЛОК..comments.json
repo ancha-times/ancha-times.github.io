@@ -144,19 +144,6 @@
       "is_pinned": false
     },
     {
-      "id": "UgxvtQfJSGttoECnI8x4AaABAg.ASeLwPS7FrPASedpzQTr5t",
-      "parent": "UgxvtQfJSGttoECnI8x4AaABAg",
-      "text": "Южное подбрюшье? Зря вы так сказали. Уже по другому смотрю на вас",
-      "author_id": "UCkOhE1e_wyxbqIKwbVMUaLg",
-      "author": "@qwerty24-t",
-      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_kKPEMRIEhxG8bngHu05ptcJrW9Z0kY_RXGRJCNP57ydM_77mNm8AQqciHuiTx9tpGYXQ=s88-c-k-c0x00ffffff-no-rj",
-      "author_is_uploader": false,
-      "author_is_verified": false,
-      "author_url": "https://www.youtube.com/@qwerty24-t",
-      "is_favorited": false,
-      "is_pinned": false
-    },
-    {
       "id": "UgxvtQfJSGttoECnI8x4AaABAg.ASeLwPS7FrPASfrjMXCyLz",
       "parent": "UgxvtQfJSGttoECnI8x4AaABAg",
       "text": "Дорогая Анча,спасибо большое за то,что вы есть и  вы с нами,за ваши интереснейшие стримы!!!❤Очень очень вас уважаю и обожаю!!!❤❤❤❤❤❤❤❤",
@@ -179,6 +166,19 @@
       "author_is_uploader": false,
       "author_is_verified": false,
       "author_url": "https://www.youtube.com/@ketimchedlishvili6302",
+      "is_favorited": false,
+      "is_pinned": false
+    },
+    {
+      "id": "UgxvtQfJSGttoECnI8x4AaABAg.ASeLwPS7FrPASedpzQTr5t",
+      "parent": "UgxvtQfJSGttoECnI8x4AaABAg",
+      "text": "Южное подбрюшье? Зря вы так сказали. Уже по другому смотрю на вас",
+      "author_id": "UCkOhE1e_wyxbqIKwbVMUaLg",
+      "author": "@qwerty24-t",
+      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_kKPEMRIEhxG8bngHu05ptcJrW9Z0kY_RXGRJCNP57ydM_77mNm8AQqciHuiTx9tpGYXQ=s88-c-k-c0x00ffffff-no-rj",
+      "author_is_uploader": false,
+      "author_is_verified": false,
+      "author_url": "https://www.youtube.com/@qwerty24-t",
       "is_favorited": false,
       "is_pinned": false
     }
