@@ -50,7 +50,7 @@ export IFS='
 
 for f in `find -iname '*.info.json'`; do
 	fn="`echo "$f" | sed -r 's/^..//;s/.info.json$//'`"
-	jq '.comments | map(del(._time_text, .timestamp, .like_count)) | {comments: .}' "$fn.info.json" >"$fn.comments.json"
+	jq '.comments | sort_by(.id) | map(del(._time_text, .timestamp, .like_count)) | {comments: .}' "$fn.info.json" >"$fn.comments.json"
 	grep -q '^\s*"is_pinned": true,\?$' "$fn.comments.json" || echo '{comments: []}' >"$fn.comments.json"
 	rm $f
 done
