@@ -26,6 +26,21 @@ jobs:
 
       - run: scripts/rebuild.sh
 
+      # - run: sqlite3 --version
+      #
+      # - uses: astral-sh/setup-uv@v7
+      #
+      # - name: get secrets
+      #   run: |
+      #     echo "$TELETHON_CONFIG" >tmp/config.txt
+      #     echo "$TELETHON_SESSION_SQL_B64" | base64 -d | sqlite3 tmp/session.session
+      #   env:
+      #     TELETHON_CONFIG: ${{ secrets.TELETHON_CONFIG }}
+      #     TELETHON_SESSION_SQL: ${{ secrets.TELETHON_SESSION_SQL }}
+      #
+      # - run: git diff --name-only ${{ github.event.before }} ${{ github.event.after }} -- data/ | cut -c26-36 | sort -u
+      # - run: uv run scripts/comments.py --last 20 --ids `git diff --name-only ${{ github.event.before }} ${{ github.event.after }} -- data/ | cut -c26-36 | sort -u`
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
