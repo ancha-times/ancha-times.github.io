@@ -1,1 +1,30 @@
-{comments: []}
+{
+  "comments": [
+    {
+      "id": "UgwvHte6hXJEkg0PhQ94AaABAg",
+      "parent": "root",
+      "text": "Тайм-коды, составленные с помощью ИИ и Александра Анисимова:",
+      "author_id": "UCdZcJ0akX0dTD9lSJTbjG_g",
+      "author": "@dina-n9005",
+      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_lGEkFpJZmZniNT5g38Bipo3CiNCqgbGo7aP1c4u0DPhiY=s88-c-k-c0x00ffffff-no-rj",
+      "author_is_uploader": false,
+      "author_is_verified": false,
+      "author_url": "https://www.youtube.com/@dina-n9005",
+      "is_favorited": false,
+      "is_pinned": true
+    },
+    {
+      "id": "UgwvHte6hXJEkg0PhQ94AaABAg.AWUPobovmPJAWUPtYlSJdp",
+      "parent": "UgwvHte6hXJEkg0PhQ94AaABAg",
+      "text": "00:01 О магнитных бурях и их влиянии на человека\n02:48 Восстановление микрофлоры после лечения клостридий\n03:33 Статистика осложнений во время магнитных бурь\n04:40 Риски после курса Ванкомицина\n05:20 Проблемы школьного образования и грамотности в США\n08:21 Инновационный препарат для растворения шрамов\n09:56 Кагоцел и риски потери фертильности\n12:47 Детали работы местных препаратов против рубцов\n14:11 Лечение невромы Мортона и побочные эффекты НПВС\n15:19 Эффективность противовирусных средств и Тамифлю\n18:34 Стволовые клетки и риски иммуносупрессии\n19:18 Причины и методы лечения эндометриоза",
+      "author_id": "UCdZcJ0akX0dTD9lSJTbjG_g",
+      "author": "@dina-n9005",
+      "author_thumbnail": "https://yt3.ggpht.com/ytc/AIdro_lGEkFpJZmZniNT5g38Bipo3CiNCqgbGo7aP1c4u0DPhiY=s88-c-k-c0x00ffffff-no-rj",
+      "author_is_uploader": false,
+      "author_is_verified": false,
+      "author_url": "https://www.youtube.com/@dina-n9005",
+      "is_favorited": false,
+      "is_pinned": false
+    }
+  ]
+}
