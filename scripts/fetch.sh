@@ -51,7 +51,7 @@ done
 cd "$TOP"
 
 git status --porcelain data | cut -c30-40 | sort -u
-python3 scripts/comments.py --last 50 -- `git status --porcelain data | cut -c30-40 | sort -u`
+python3 scripts/comments.py --last 20 -- `git status --porcelain data | cut -c30-40 | sort -u`
 
 test "$(git status --porcelain data)" = "" && exit 0 || true
 
